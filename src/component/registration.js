@@ -1,8 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './header'
 import Footer from './footer'
+import firebase from './util/firebase'
+
 
 function Registration() {
+
+    const [name, setName] = useState('')
+    const [address, setAddress] = useState('')
+    const [contact, setContact] = useState('')
+    const [gender, setGender] = useState('')
+    const [email, setEmail] = useState('')
+    const [programme, setProgramme] = useState('')
+    const [submiting, setSubmiting] = useState(false)
+
+    const nameChangeHandler = (e) => {
+        setName(e.target.value);
+    }
+
+    const addStudent = (e) => {
+        e.preventDefault();
+        setSubmiting(true);
+
+        const studentRef = firebase.database().ref('studentDetail');
+        const data = {
+            name,
+            address,
+            contact,
+            gender,
+            email,
+            programme
+        }
+        studentRef.push(data).then(resp =>{
+            setSubmiting(false);
+            setName('')
+            setAddress('')
+            setContact('')
+            setGender('')
+            setEmail('')
+            setProgramme('')
+        }).catch(error =>{
+            setSubmiting(false);
+        } )
+
+    }
     return (
         <div className="registration">
             <Header />
@@ -16,7 +57,7 @@ function Registration() {
                             </ol>
                         </nav>
                     </div>
-                    <div className="form-content">
+                    <div className="form-content shadow w-50 m-auto pt-2 pe-3 ps-3 pb-4">
                         <div className="title text-center mt-4">
                             <h2>Student Registration Form</h2>
                             <h7 className="text-muted">Fill out the form carefully for registration</h7>
@@ -25,33 +66,32 @@ function Registration() {
                             <form class="row g-3">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Full Name</label>
-                                    <input type="text" class="form-control"/>
+                                    <input type="text" class="form-control" onChange={nameChangeHandler} value={name} />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputAddress" class="form-label">Address</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" onChange={(e)=>setAddress(e.target.value)} value={address}/>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="contact" class="form-label">Contact</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control"onChange={(e)=>setContact(e.target.value)} value={contact} />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="gender" class="form-label">Gender</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" onChange={(e)=>setGender(e.target.value)} value={gender}/>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" />
+                                    <input type="email" class="form-control" onChange={(e)=>setEmail(e.target.value)} value={email}/>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="programme" class="form-label">Programme</label>
-                                    <input type="text" class="form-control" />
+                                    <input type="text" class="form-control" onChange={(e)=>setProgramme(e.target.value)} value={programme} />
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                                    <button type="submit" class="btn btn-outline-success" onClick={addStudent} disabled={submiting}>Submit</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

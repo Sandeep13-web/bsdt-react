@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../index';
 import Header from './header';
 import Footer from './footer';
+import StudentCard from './studentCard';
 import './assets/dashboard.css'
+import firebase from './util/firebase'
 
 
 function Detail() {
+
+    const [studentList, setStudentList] = useState();
+
+    useEffect(() => {
+        const studentRef = firebase.database().ref("studentDetail");
+        studentRef.on("value", (student) => {
+            const students = student.val();
+            const studentList = []
+            for (let id in students) {
+                studentList.push({ id, ...students[id] })
+            }
+            setStudentList(studentList);
+        })
+    }, [])
+
+
+
     return (
         <div>
             <Header />
@@ -25,22 +44,12 @@ function Detail() {
                         </div>
                         <div className="student-card mt-4">
                             <div className="row">
-                                <div className="col-md-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Student Name : </h5>
-                                            <h6 className="card-title">Address : </h6>
-                                            <h6 className="card-title">Contact : </h6>
-                                            <h6 className="card-title">Gender : </h6>
-                                            <h6 className="card-title">Email : </h6>
-                                            <h6 className="card-title">Programme : </h6>
-                                            <div className="buttons d-flex justify-content-between mt-4">
-                                                <button className="btn btn-outline-primary">Edit</button>
-                                                <button className="btn btn-outline-danger">Delete</button>
-                                            </div>
-                                        </div>
+                                {studentList ? studentList.map((student, index) => (
+                                    <div className="col-md-4" key={index}>
+                                        <StudentCard student={student} />
                                     </div>
-                                </div>
+
+                                )) : ''}
                             </div>
                         </div>
                     </div>

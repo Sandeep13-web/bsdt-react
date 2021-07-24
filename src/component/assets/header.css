@@ -2,3 +2,21 @@
     background-color: #336699 !important;
     font-size: 17px;
 }
+.navbar li p{
+    color: #B2BEB5;
+}
+.navbar-nav li p:hover , .navbar-nav li a.active p{
+    color: #fff;
+    border-bottom: solid 1px #fff;
+}
+
+.dropdown-menu li{
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color:  #D9F1F1;
+}
+/* .dropdown-menu h7{
+    color: #fff;
+} */

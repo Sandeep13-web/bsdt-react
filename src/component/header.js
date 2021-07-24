@@ -16,22 +16,21 @@ function Header() {
                         <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
                                 <li class="nav-item px-3">
-                                    <NavLink to="/" className="text-light text-decoration-none align-items-center">Home</NavLink>
+                                    <NavLink to="/" className="text-light text-decoration-none align-items-center" exact><p className="mb-0">Home</p></NavLink>
                                 </li>
                                 <li class="nav-item px-3">
-                                    <NavLink to="/student-details" className="text-light text-decoration-none align-items-center">Student Details</NavLink>
+                                    <NavLink to="/student-details" className="text-light text-decoration-none align-items-center" exact><p className="mb-0">Student Details</p></NavLink>
                                 </li>
                                 <li class="nav-item px-3">
-                                    <NavLink to="/add-student" className="text-light text-decoration-none align-items-center">Add a Student</NavLink>
+                                    <NavLink to="/add-student" className="text-light text-decoration-none align-items-center" exact><p className="mb-0">Add a Student</p></NavLink>
 
                                 </li>
                                 <li class="nav-item dropdown px">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-people bi-2x mx-1"></i>
+                                        <i class="bi bi-people mx-1"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                        <li><NavLink to="/login" className="text-dark text-decoration-none align-items-center p-3"><h7 className="mb-0"><i class="fas fa-sign-in-alt pe-2"></i>Logout</h7></NavLink></li>
                                     </ul>
                                 </li>
                             </ul>

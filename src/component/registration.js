@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState }  from 'react'
 import Header from './header'
 import Footer from './footer'
 import firebase from './util/firebase'
+import './assets/registration.css'
+import { Redirect } from 'react-router'
 
 
 function Registration() {
@@ -12,7 +14,7 @@ function Registration() {
     const [gender, setGender] = useState('')
     const [email, setEmail] = useState('')
     const [programme, setProgramme] = useState('')
-    const [submiting, setSubmiting] = useState(false)
+    const [submitting, setSubmitting] = useState(false)
 
     const nameChangeHandler = (e) => {
         setName(e.target.value);
@@ -20,7 +22,7 @@ function Registration() {
 
     const addStudent = (e) => {
         e.preventDefault();
-        setSubmiting(true);
+        setSubmitting(true);
 
         const studentRef = firebase.database().ref('studentDetail');
         const data = {
@@ -32,15 +34,16 @@ function Registration() {
             programme
         }
         studentRef.push(data).then(resp =>{
-            setSubmiting(false);
+            setSubmitting(false);
             setName('')
             setAddress('')
             setContact('')
             setGender('')
             setEmail('')
             setProgramme('')
+            // return <Redirect to="/student-details" />
         }).catch(error =>{
-            setSubmiting(false);
+            setSubmitting(false);
         } )
 
     }
@@ -52,17 +55,17 @@ function Registration() {
                     <div className="start pt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="bi bi-clipboard-check text-dark mx-1"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#" className="text-dark"><i class="fas fa-clipboard-check"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Add a Student</li>
                             </ol>
                         </nav>
                     </div>
-                    <div className="form-content shadow w-50 m-auto pt-2 pe-3 ps-3 pb-4">
-                        <div className="title text-center mt-4">
+                    <div className="form-content shadow pt-2 pe-3 ps-3 pb-4">
+                        <div className="title text-center mt-4 pb-4">
                             <h2>Student Registration Form</h2>
                             <h7 className="text-muted">Fill out the form carefully for registration</h7>
                         </div>
-                        <div className="form-area mt-3">
+                        <div className="form-area">
                             <form class="row g-3">
                                 <div class="col-md-6">
                                     <label for="name" class="form-label">Full Name</label>
@@ -89,7 +92,7 @@ function Registration() {
                                     <input type="text" class="form-control" onChange={(e)=>setProgramme(e.target.value)} value={programme} />
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-outline-success" onClick={addStudent} disabled={submiting}>Submit</button>
+                                    <button type="submit" class="btn btn-outline-success" onClick={addStudent} disabled={submitting}>Submit</button>
                                 </div>
                             </form>
                         </div>

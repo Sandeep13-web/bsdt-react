@@ -4,6 +4,7 @@ import Header from './header';
 import Footer from './footer';
 import StudentCard from './studentCard';
 import './assets/dashboard.css'
+import './assets/details.css'
 import firebase from './util/firebase'
 
 
@@ -33,7 +34,7 @@ function Detail() {
                     <div className="start pt-3">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="bi bi-person text-dark mx-1"></i></a></li>
+                                <li class="breadcrumb-item"><a href="#" className="text-dark"><i class="fas fa-user-friends"></i></a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Student Details</li>
                             </ol>
                         </nav>
@@ -45,7 +46,7 @@ function Detail() {
                         <div className="student-card mt-4">
                             <div className="row">
                                 {studentList ? studentList.map((student, index) => (
-                                    <div className="col-md-4" key={index}>
+                                    <div className="col-lg-4 col-md-6" key={index}>
                                         <StudentCard student={student} />
                                     </div>
 

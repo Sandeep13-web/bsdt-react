@@ -1,0 +1,11 @@
+.form-content{
+    padding-left: 70px !important;
+    padding-right: 70px !important;
+    padding-bottom: 40px !important;
+    background-color: white;
+}
+.form-content .title h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 35px;
+}

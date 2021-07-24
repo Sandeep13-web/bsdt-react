@@ -1,0 +1,15 @@
+.details-content h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 35px;
+}
+.upper-text{
+    min-height: 183px;
+}
+
+.card-body h5, .card-body h6{
+    color: #000;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+

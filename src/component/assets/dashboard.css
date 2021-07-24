@@ -1,3 +1,7 @@
-.content{
+.body{
     background: #EFEEED;
+}
+.carousel-item{
+    max-width: 1296px;
+    max-height: 529px;
 }

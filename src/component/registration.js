@@ -1,9 +1,8 @@
 import React, { useState }  from 'react'
-import Header from './header'
 import Footer from './footer'
 import firebase from './util/firebase'
 import './assets/registration.css'
-import { Redirect } from 'react-router'
+import { Redirect , useHistory} from 'react-router'
 
 
 function Registration() {
@@ -15,6 +14,7 @@ function Registration() {
     const [email, setEmail] = useState('')
     const [programme, setProgramme] = useState('')
     const [submitting, setSubmitting] = useState(false)
+    const history = useHistory();
 
     const nameChangeHandler = (e) => {
         setName(e.target.value);
@@ -35,12 +35,14 @@ function Registration() {
         }
         studentRef.push(data).then(resp =>{
             setSubmitting(false);
+            history.push('/student-details')
             setName('')
             setAddress('')
             setContact('')
             setGender('')
             setEmail('')
             setProgramme('')
+            
             // return <Redirect to="/student-details" />
         }).catch(error =>{
             setSubmitting(false);
@@ -49,7 +51,6 @@ function Registration() {
     }
     return (
         <div className="registration">
-            <Header />
             <div className="content pb-5">
                 <div className="container">
                     <div className="start pt-3">

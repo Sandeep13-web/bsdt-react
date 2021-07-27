@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import '../index';
-import Header from './header';
 import Footer from './footer';
 import StudentCard from './studentCard';
 import './assets/dashboard.css'
@@ -23,12 +22,12 @@ function Detail() {
             setStudentList(studentList);
         })
     }, [])
-
+    
+    
 
 
     return (
         <div>
-            <Header />
             <div className="content pb-5">
                 <div className="container">
                     <div className="start pt-3">
@@ -47,7 +46,7 @@ function Detail() {
                             <div className="row">
                                 {studentList ? studentList.map((student, index) => (
                                     <div className="col-lg-4 col-md-6" key={index}>
-                                        <StudentCard student={student} />
+                                        <StudentCard student={student}  />
                                     </div>
 
                                 )) : ''}

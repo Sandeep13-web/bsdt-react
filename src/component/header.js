@@ -3,7 +3,7 @@ import './assets/header.css'
 import logo from './assets/images/logo1.png';
 import { NavLink } from 'react-router-dom'
 
-function Header() {
+function Header({logOut}) {
     return (
         <div>
             <div className="header">
@@ -30,7 +30,7 @@ function Header() {
                                         <i class="bi bi-people mx-1"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><NavLink to="/login" className="text-dark text-decoration-none align-items-center p-3"><h7 className="mb-0"><i class="fas fa-sign-in-alt pe-2"></i>Logout</h7></NavLink></li>
+                                        <li><NavLink to="/login" className="text-dark text-decoration-none align-items-center p-3" onClick={logOut}><h7 className="mb-0"><i class="fas fa-sign-in-alt pe-2"></i>Logout</h7></NavLink></li>
                                     </ul>
                                 </li>
                             </ul>

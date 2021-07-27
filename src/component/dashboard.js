@@ -1,6 +1,5 @@
 import React from 'react'
 import '../index';
-import Header from './header';
 import Footer from './footer';
 import './assets/dashboard.css'
 import DashboardBg from './assets/images/dashboard-bg.jpg'
@@ -11,7 +10,6 @@ import DashboardBg2 from './assets/images/dashboard-bg2.jpg'
 function Dashboard() {
     return (
         <div>
-            <Header />
             <div className="content">
                 <div className="container">
                     <div className="start pt-3">

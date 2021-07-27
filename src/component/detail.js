@@ -11,6 +11,8 @@ function Detail() {
 
     const [studentList, setStudentList] = useState();
 
+    
+
     useEffect(() => {
         const studentRef = firebase.database().ref("studentDetail");
         studentRef.on("value", (student) => {
@@ -22,13 +24,14 @@ function Detail() {
             setStudentList(studentList);
         })
     }, [])
-    
-    
+
+
 
 
     return (
         <div>
             <div className="content pb-5">
+                
                 <div className="container">
                     <div className="start pt-3">
                         <nav aria-label="breadcrumb">
@@ -46,7 +49,7 @@ function Detail() {
                             <div className="row">
                                 {studentList ? studentList.map((student, index) => (
                                     <div className="col-lg-4 col-md-6" key={index}>
-                                        <StudentCard student={student}  />
+                                        <StudentCard student={student} />
                                     </div>
 
                                 )) : ''}

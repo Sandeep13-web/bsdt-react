@@ -44,4 +44,4 @@ function Login({ authenticate, isAuth }) {
     )
 }
 
-export default Login
+export default Login;
